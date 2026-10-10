@@ -1,0 +1,8 @@
+En el primer script, las consultas se armaban uniendo texto directamente con los datos ingresados
+por el usuario. Esto dejaba la puerta abierta a inyecciones SQL como ' OR '1'='1' o el uso de 
+comentarios (--), lo que engañaba a la base de datos para saltarse los filtros y mostrar toda la
+información privada. En el segundo script, se solucionó usando consultas parametrizadas 
+(Prepared Statements), donde se utilizan comodines (%s) y los datos se envían por separado.
+Con este cambio, el motor de base de datos define primero la estructura de la consulta y trata la
+entrada del usuario únicamente como texto de búsqueda y no como órdenes a ejecutar, 
+bloqueando por completo cualquier intento de ataque.
